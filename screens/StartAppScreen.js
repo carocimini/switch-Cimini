@@ -25,6 +25,7 @@ const StartAppScreen = ({onStartApp}) => {
         setNameValue('')
     }
     const handleInput = (text) => {
+        console.log(text)
         setNameValue(text)
     }
 
@@ -39,8 +40,8 @@ const StartAppScreen = ({onStartApp}) => {
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
             <View style={styles.screen}>
                 <Card>
-                    <Text>Indica tu Nombre</Text>
-                    <Input onChangeText={handleInput} value={nameValue}/>
+                    <Text>Indica el Nombre de la Lista</Text>
+                    <Input value={nameValue} onChangeText={handleInput}/>
                     <View style={styles.buttonContainer}>
                         <Pressable style={styles.clearButton} onPress={handleResetInput}>
                             <Text style={{color: 'white'}}>Borrar</Text>
@@ -51,7 +52,7 @@ const StartAppScreen = ({onStartApp}) => {
                     </View>
                 </Card>
                 {confirmed && <Text>{selectedName}</Text>} 
-                <Text style={{marginTop: 20,}}>{selectedName} para crear una lista haz click en continuar</Text>
+                <Text style={{marginTop: 20,}}>{selectedName} Para crear una lista haz click en continuar</Text>
                 <Button title="Continuar" onPress={() => onStartApp(selectedName)}/>
             </View>    
                 

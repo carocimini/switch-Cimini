@@ -5,7 +5,7 @@ import colors from "../constants/colors";
 
 const Input = ({restProps, style}) => {
     return (
-        <TextInput {...restProps} blurOnSubmimt autocapitalization='none' autoCorrect={false} keyboadType='default' style={{ ...styles.input, ...style}}/>
+        <TextInput blurOnSubmimt autocapitalization='none' autoCorrect={false} keyboadType='default' style={{ ...styles.input, ...style}} {...restProps} />
     )
 }
 
