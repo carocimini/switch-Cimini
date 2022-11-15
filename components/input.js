@@ -1,11 +1,11 @@
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, TextInput } from "react-native";
 
 import React from "react";
 import colors from "../constants/colors";
 
-const Input = ({style, restProps}) => {
+const Input = ({restProps, style}) => {
     return (
-        <TextInput {...restProps} style={{ ...styles.input, ...style}}/>
+        <TextInput {...restProps} blurOnSubmimt autocapitalization='none' autoCorrect={false} keyboadType='default' style={{ ...styles.input, ...style}}/>
     )
 }
 

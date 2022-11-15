@@ -1,31 +1,62 @@
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
-import React, { useState } from "react";
+import {
+    Button,
+    Keyboard,
+    Pressable,
+    StyleSheet,
+    Text,
+    TouchableWithoutFeedback,
+    View
+} from "react-native";
 
 import Card from "../components/card";
 import Input from "../components/input";
+import React from "react";
 import colors from "../constants/colors";
+import { useState } from "react";
 
-const StartAppScreen = () => {
-    const [value, setValue] = useState('')
+const StartAppScreen = ({onStartApp}) => {
+    const [nameValue, setNameValue] = useState('')
+    const [confirmed, setConfirmed] = useState(false)
+    const [selectedName, setSelectedName] = useState('')
+
+    
+    const handleResetInput = () => {
+        setConfirmed(false)
+        setNameValue('')
+    }
     const handleInput = (text) => {
-        setValue(text)
+        setNameValue(text)
+    }
+
+    const handleConfirmation = () => {
+        setConfirmed(true)
+        setSelectedName(nameValue)
+        setNameValue('')
+        console.log(nameValue)
     }
     
     return (
-        <View style={styles.screen}>
-            <Card>
-                <Text>Indica tu email</Text>
-                <Input value={value} onChangeText={handleInput} blurOnSubmimt autocapitalization='none' autoCorrect={false} keyboadType='email-address'/>
-                <View style={styles.buttonContainer}>
-                    <Pressable style={styles.clearButton}>
-                        <Text style={{color: 'white'}}>Borrar</Text>
-                    </Pressable>
-                    <Pressable style={{...styles.clearButton,...styles.confirmButton}}>
-                        <Text style={{color: 'white'}}>Confirmar</Text>
-                    </Pressable>
-                </View>
-            </Card>
-        </View>
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+            <View style={styles.screen}>
+                <Card>
+                    <Text>Indica tu Nombre</Text>
+                    <Input onChangeText={handleInput} value={nameValue}/>
+                    <View style={styles.buttonContainer}>
+                        <Pressable style={styles.clearButton} onPress={handleResetInput}>
+                            <Text style={{color: 'white'}}>Borrar</Text>
+                        </Pressable>
+                        <Pressable style={{...styles.clearButton,...styles.confirmButton}} onPress={handleConfirmation}>
+                            <Text style={{color: 'white'}}>Confirmar</Text>
+                        </Pressable>
+                    </View>
+                </Card>
+                {confirmed && <Text>{selectedName}</Text>} 
+                <Text style={{marginTop: 20,}}>{selectedName} para crear una lista haz click en continuar</Text>
+                <Button title="Continuar" onPress={() => onStartApp(selectedName)}/>
+            </View>    
+                
+                
+        </TouchableWithoutFeedback>
     )
 }
 

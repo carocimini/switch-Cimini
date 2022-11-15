@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Keyboard, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
 
 import React from "react";
 import colors from "../constants/colors";
@@ -7,18 +7,20 @@ const AddItem = (props) => {
     const{textItem, onHandleChange, addItem} = props
 
     return(
-        <View style={styles.inputcontainer}>
-            <TextInput
-            placeholder="Tarea Pendiente..."
-            placeholderTextColor="grey"
-            style={styles.inputStyle}
-            value={textItem}
-            onChangeText={onHandleChange}
-            />
-            <TouchableOpacity title="ADD" style={styles.button} onPress={addItem}>
-                <Text>+</Text>
-            </TouchableOpacity>
-        </View>
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+            <View style={styles.inputcontainer}>
+                <TextInput
+                placeholder="Tarea Pendiente..."
+                placeholderTextColor="grey"
+                style={styles.inputStyle}
+                value={textItem}
+                onChangeText={onHandleChange}
+                />
+                <TouchableOpacity title="ADD" style={styles.button} onPress={addItem}>
+                    <Text>+</Text>
+                </TouchableOpacity>
+        </View>    
+        </TouchableWithoutFeedback>
     )
 }
 
