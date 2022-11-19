@@ -73,7 +73,6 @@ const ListScreen = () => {
 
 return (
     <View style={styles.container}>
-        <Button title="Volver"/>
         <View style={styles.subContainer}>
             <Text style={styles.titulo}>Crear Tareas</Text>
             <Text style={styles.subtitulo}>Agrega aqui tus tareas pendientes para hoy</Text>

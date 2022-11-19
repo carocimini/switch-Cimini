@@ -51,9 +51,13 @@ const StartAppScreen = ({onStartApp}) => {
                         </Pressable>
                     </View>
                 </Card>
-                {confirmed && <Text>{selectedName}</Text>} 
-                <Text style={{marginTop: 20,}}>{selectedName} Para crear una lista haz click en continuar</Text>
-                <Button title="Continuar" onPress={() => onStartApp(selectedName)}/>
+                {confirmed && (
+                    <Card newStyles={{marginTop:50,}}>
+                        <Text style={{marginTop: 20,}}>Para crear la lista "{selectedName}"", haz click en continuar</Text>
+                        <Button title="Continuar" onPress={() => onStartApp(selectedName)}/>
+                    </Card>
+                )} 
+                
             </View>    
                 
                 

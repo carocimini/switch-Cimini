@@ -3,7 +3,7 @@ import { StyleSheet, TextInput } from "react-native";
 import React from "react";
 import colors from "../constants/colors";
 
-const Input = ({restProps, style}) => {
+const Input = ({style, ...restProps}) => {
     return (
         <TextInput blurOnSubmimt autocapitalization='none' autoCorrect={false} keyboadType='default' style={{ ...styles.input, ...style}} {...restProps} />
     )
